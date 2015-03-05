@@ -87,4 +87,14 @@ public class VideoCastConsumerImpl extends BaseCastConsumerImpl
     public void onTextTrackLocaleChanged(Locale locale) {
     }
 
+    @Override
+    public void onLoadCompleted() {
+
+    }
+
+    @Override
+    public void onSeekCompleted() {
+
+    }
+
 }
