@@ -137,6 +137,7 @@ public abstract class BaseCastManager implements DeviceSelectionListener, Connec
     private static final int UI_VISIBILITY_DELAY_MS = 300;
     private final Handler mUiVisibilityHandler;
 
+    private boolean mIsCastPresent;
     /*************************************************************************/
     /************** Abstract Methods *****************************************/
     /*************************************************************************/
@@ -226,6 +227,7 @@ public abstract class BaseCastManager implements DeviceSelectionListener, Connec
      * to signal the change in presence of cast devices on network.
      */
     public void onCastAvailabilityChanged(boolean castPresent) {
+        mIsCastPresent = castPresent;
         for (IBaseCastConsumer consumer : mBaseCastConsumers) {
             try {
                 consumer.onCastAvailabilityChanged(castPresent);
@@ -233,6 +235,10 @@ public abstract class BaseCastManager implements DeviceSelectionListener, Connec
                 LOGE(TAG, "onCastAvailabilityChanged(): Failed to inform " + consumer, e);
             }
         }
+    }
+
+    public boolean isCastPresent() {
+        return mIsCastPresent;
     }
 
     /**
