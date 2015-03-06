@@ -1091,14 +1091,13 @@ public class VideoCastManager extends BaseCastManager
                         } else {
                             if (activeTracks != null) {
                                 setActiveTrackIds(activeTracks);
-                            } else {
-                                synchronized (mVideoConsumers) {
-                                    for (IVideoCastConsumer consumer : mVideoConsumers) {
-                                        try {
-                                            consumer.onLoadCompleted();
-                                        } catch (Exception e) {
-                                            LOGE(TAG, "onMessageReceived(): Failed to inform " + consumer, e);
-                                        }
+                            }
+                            synchronized (mVideoConsumers) {
+                                for (IVideoCastConsumer consumer : mVideoConsumers) {
+                                    try {
+                                        consumer.onLoadCompleted();
+                                    } catch (Exception e) {
+                                        LOGE(TAG, "onMessageReceived(): Failed to inform " + consumer, e);
                                     }
                                 }
                             }
@@ -1271,7 +1270,7 @@ public class VideoCastManager extends BaseCastManager
                     public void onResult(MediaChannelResult result) {
                         if (!result.getStatus().isSuccess()) {
                             onFailed(R.string.failed_seek, result.getStatus().getStatusCode());
-                        }else{
+                        } else {
                             synchronized (mVideoConsumers) {
                                 for (IVideoCastConsumer consumer : mVideoConsumers) {
                                     try {

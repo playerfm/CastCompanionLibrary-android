@@ -130,8 +130,14 @@ public interface IVideoCastConsumer extends IBaseCastConsumer {
      */
     public void onTextTrackLocaleChanged(Locale locale);
 
+    /**
+     * Called when loadMedia return with success
+     */
     public void onLoadCompleted();
 
+    /**
+     * Called when seek is completed with success
+     */
     public void onSeekCompleted();
 
 }
