@@ -32,7 +32,7 @@ public class VideoMediaRouteControllerDialogFragment extends MediaRouteControlle
     public VideoMediaRouteControllerDialog onCreateControllerDialog(
             Context context, Bundle savedInstanceState) {
         mCustomControllerDialog = new VideoMediaRouteControllerDialog(context);
-        mCustomControllerDialog.setVolumeControlEnabled(false);
+//        mCustomControllerDialog.setVolumeControlEnabled(false);
         return mCustomControllerDialog;
     }
 }
